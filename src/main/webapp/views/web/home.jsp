@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Trang chủ</title>
 	<!-- css -->
-	
+	<%@ include file="/common/web/link-css.jsp" %>
 </head>
 <body>
 	<%@ include file="/common/web/header.jsp" %>

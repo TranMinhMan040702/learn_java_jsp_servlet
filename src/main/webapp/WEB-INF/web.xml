@@ -4,10 +4,16 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee" version="3.0">
 	<display-name>new jdbc 2022</display-name>
 
+	<listener>
+		<listener-class>org.jboss.weld.environment.servlet.Listener
+		</listener-class>
+	</listener>
+
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
