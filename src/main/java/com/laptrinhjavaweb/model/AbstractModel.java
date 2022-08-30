@@ -1,6 +1,6 @@
 package com.laptrinhjavaweb.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class AbstractModel {
 	private Long id;

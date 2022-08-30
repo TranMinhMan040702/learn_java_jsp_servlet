@@ -2,6 +2,8 @@ package com.laptrinhjavaweb.controller.web;
 
 
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,10 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.laptrinhjavaweb.model.NewsModel;
 import com.laptrinhjavaweb.service.ICategoryService;
 import com.laptrinhjavaweb.service.INewsService;
-
-import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/trang-chu"})
 public class HomeController extends HttpServlet{
@@ -21,13 +23,22 @@ public class HomeController extends HttpServlet{
 	
 	@Inject
 	private ICategoryService categoryService;
+	
 	@Inject
 	private INewsService newsService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String title = "Bai viet 4";
+		String content = "Bai viet 4";
 		Long categoryId = 1L;
-		req.setAttribute("news", newsService.findCategoryById(categoryId));
+		NewsModel newsModel = new NewsModel();
+		newsModel.setTitle(title);
+		newsModel.setContent(content);
+		newsModel.setCategoryId(categoryId);
+		
+		newsService.save(newsModel);
+		
 		req.setAttribute("categories", categoryService.findAll());
 		RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
 		rd.forward(req, resp);

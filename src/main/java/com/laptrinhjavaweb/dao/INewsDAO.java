@@ -6,4 +6,5 @@ import com.laptrinhjavaweb.model.NewsModel;
 
 public interface INewsDAO extends GenericDAO<NewsModel> {
 	List<NewsModel> findCategoryById(Long categoryid);
+	Long save(NewsModel newsModel);
 }
