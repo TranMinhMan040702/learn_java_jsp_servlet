@@ -22,5 +22,10 @@ public class NewsService implements INewsService{
 		System.out.print(newsId);
 		return null;
 	}
+	@Override
+	public void delete(NewsModel newsModel) {
+		newsDao.delete(newsModel);
+	}
+	
 	
 }
