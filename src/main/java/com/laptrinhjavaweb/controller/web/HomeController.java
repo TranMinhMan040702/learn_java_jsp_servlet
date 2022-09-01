@@ -33,7 +33,7 @@ public class HomeController extends HttpServlet{
 		NewsModel newsModel = new NewsModel();
 		newsModel.setId(id);
 		
-		newsService.delete(newsModel);
+//		newsService.delete(newsModel);
 		
 		req.setAttribute("categories", categoryService.findAll());
 		RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");

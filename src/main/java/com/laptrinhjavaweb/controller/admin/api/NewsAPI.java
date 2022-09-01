@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.laptrinhjavaweb.utils.HttpUtil;
+
 @WebServlet(urlPatterns = {"/api-admin-news"})
 public class NewsAPI extends HttpServlet{
 
@@ -15,19 +17,21 @@ public class NewsAPI extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		HttpUtil.of(req.getReader());
 	}
 	
-	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPut(req, resp);
-	}
-	
-	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doDelete(req, resp);
-	}
+//	@Override
+//	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		super.doPut(req, resp);
+//	}
+//	
+//	@Override
+//	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		super.doDelete(req, resp);
+//	}
 	
 }
