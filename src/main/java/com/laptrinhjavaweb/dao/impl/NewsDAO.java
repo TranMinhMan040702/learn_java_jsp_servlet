@@ -25,4 +25,11 @@ public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 		String sql = "delete from news where id = ?";
 		update(sql, newsModel.getId());
 	}
+
+	@Override
+	public NewsModel findOne(Long id) {
+		String sql = "select * from news where id = ?";
+		List<NewsModel> news = query(sql, new NewsMapper(), id);
+		return news.isEmpty() ? null : news.get(0);
+	}
 }

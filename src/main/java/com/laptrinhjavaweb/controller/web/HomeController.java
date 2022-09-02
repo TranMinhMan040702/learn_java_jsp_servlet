@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.laptrinhjavaweb.model.NewsModel;
 import com.laptrinhjavaweb.service.ICategoryService;
-import com.laptrinhjavaweb.service.INewsService;
 
 @WebServlet(urlPatterns = {"/trang-chu"})
 public class HomeController extends HttpServlet{
@@ -24,8 +23,6 @@ public class HomeController extends HttpServlet{
 	@Inject
 	private ICategoryService categoryService;
 	
-	@Inject
-	private INewsService newsService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
