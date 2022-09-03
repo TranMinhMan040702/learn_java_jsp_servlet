@@ -39,5 +39,4 @@ public class NewsModel extends AbstractModel {
 		this.categoryId = categoryId;
 	}
 	
-	
 }

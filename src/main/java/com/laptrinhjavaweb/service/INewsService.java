@@ -7,5 +7,6 @@ import com.laptrinhjavaweb.model.NewsModel;
 public interface INewsService {
 	List<NewsModel> findCategoryById(Long categoryid);
 	NewsModel save(NewsModel newsModel);
-	void delete(NewsModel newsModel);
+	NewsModel update(NewsModel newsModel);
+	void delete(long[] ids);
 }
