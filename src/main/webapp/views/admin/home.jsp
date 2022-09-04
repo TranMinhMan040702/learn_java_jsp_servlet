@@ -26,14 +26,17 @@
 			<div class="main-content-inner">
 				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Trang
-								chủ</a></li>
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i> 
+							<a href="#">Trang chủ</a></li>
 					</ul>
 					<!-- /.breadcrumb -->
 				</div>
 				<div class="page-content">
 					<div class="row">
-						<div class="col-xs-12"></div>
+						<div class="col-xs-12">
+							
+						</div>
 					</div>
 				</div>
 			</div>
@@ -47,6 +50,7 @@
 			class="btn-scroll-up btn btn-sm btn-inverse display"> <i
 			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
+	</div>
 </body>
 <%@ include file="/common/admin/import-js.jsp" %>
 </html>
