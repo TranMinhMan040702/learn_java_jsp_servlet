@@ -5,6 +5,8 @@
 <head>
 	<title><dec:title default="Trang chủ" /></title>
 	<%@ include file="/common/admin/link-css.jsp" %>
+	<%@ include file="/common/admin/import-js.jsp" %>
+	<%@ include file="/common/paging/paging.jsp" %>
 </head>
 <body class="no-skin">
 	<!-- header -->
@@ -29,6 +31,5 @@
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 	</div>
-	<%@ include file="/common/admin/import-js.jsp" %>
 </body>
 </html>

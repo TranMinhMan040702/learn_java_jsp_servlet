@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> 
-<%@include file="/common/taglib.jsp"%>
+pageEncoding="UTF-8"%> <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +8,7 @@ pageEncoding="UTF-8"%>
     </head>
     <body>
         <div class="main-content">
-            <form action="<c:url value='/admin-news'/>"  method="get" id="formSubmit">
+            <form action="/admin-news" method="get" id="formSubmit">
                 <div class="main-content-inner">
                     <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                         <ul class="breadcrumb">
@@ -79,11 +78,9 @@ pageEncoding="UTF-8"%>
                     visiblePages: 10,
                     startPage: currentPage,
                     onPageClick: function (event, page) {
-                        if (currentPage != page) {
-                        	$("#maxPageItem").val(limit);
-                            $("#page").val(page);
-                            $("#formSubmit").submit();
-                        }
+                        $("#maxPageItem").val(limit);
+                        $("#page").val(page);
+                        $("#fromSubmit").submit();
                     },
                 });
             });

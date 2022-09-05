@@ -47,4 +47,16 @@ public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 				updateNews.getCreatedDate(), updateNews.getCreatedBy(), 
 				updateNews.getModifiedDate(), updateNews.getModifiedBy(), updateNews.getId());	
 	}
+
+	@Override
+	public List<NewsModel> findAll(Integer offset, Integer limit) {
+		String sql = "select * from news limit ?, ?";
+		return query(sql, new NewsMapper(), offset, limit);
+	}
+
+	@Override
+	public int getTotalItem() {
+		String sql = "select count(*) from news";
+		return count(sql);
+	}
 }

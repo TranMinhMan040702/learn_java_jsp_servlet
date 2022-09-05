@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> 
-<%@include file="/common/taglib.jsp"%>
+pageEncoding="UTF-8"%> <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,22 +8,26 @@ pageEncoding="UTF-8"%>
     </head>
     <body>
         <div class="main-content">
-            <form action="<c:url value='/admin-news'/>"  method="get" id="formSubmit">
-                <div class="main-content-inner">
-                    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                        <ul class="breadcrumb">
-                            <li>
-                                <i class="ace-icon fa fa-home home-icon"></i>
-                                <a href="#">Trang chủ</a>
-                            </li>
-                        </ul>
-                        <!-- /.breadcrumb -->
-                    </div>
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">Trang chủ</a>
+                        </li>
+                    </ul>
+                    <!-- /.breadcrumb -->
+                </div>
 
-                    <div class="page-content">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="table-responsive">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <form
+                                    action="/admin-news"
+                                    method="get"
+                                    id="formSubmit"
+                                >
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
@@ -46,32 +49,37 @@ pageEncoding="UTF-8"%>
                                             </c:forEach>
                                         </tbody>
                                     </table>
-
-                                    <ul class="pagination" id="pagination"></ul>
-                                    <input
-                                        type="hidden"
-                                        name="page"
-                                        value=""
-                                        id="page"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        name="maxPageItem"
-                                        value=""
-                                        id="maxPageItem"
-                                    />
-                                </div>
+                                </form>
+                                <ul class="pagination" id="pagination"></ul>
+                                <input
+                                    type="hidden"
+                                    name="page"
+                                    value=""
+                                    id="page"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="maxPageItem"
+                                    value=""
+                                    id="maxPageItem"
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
 
         <!-- /.main-content -->
         <script type="text/javascript">
-            var totalPage = ${model.totalPage};
-            var currentPage = ${model.page};
+            var totalPage = $;
+            {
+                model.totalPage;
+            }
+            var currentPage = $;
+            {
+                model.page;
+            }
             var limit = 2;
             $(function () {
                 window.pagObj = $("#pagination").twbsPagination({
@@ -79,11 +87,9 @@ pageEncoding="UTF-8"%>
                     visiblePages: 10,
                     startPage: currentPage,
                     onPageClick: function (event, page) {
-                        if (currentPage != page) {
-                        	$("#maxPageItem").val(limit);
-                            $("#page").val(page);
-                            $("#formSubmit").submit();
-                        }
+                        $("#maxPageItem").val(limit);
+                        $("#page").val(page);
+                        $("#fromSubmit").submit();
                     },
                 });
             });
