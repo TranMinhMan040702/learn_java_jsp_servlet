@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.laptrinhjavaweb.constant.SystemConstant;
 import com.laptrinhjavaweb.model.NewsModel;
+import com.laptrinhjavaweb.paging.PageRequest;
+import com.laptrinhjavaweb.paging.Pageble;
 import com.laptrinhjavaweb.service.INewsService;
+import com.laptrinhjavaweb.sort.Sorter;
 import com.laptrinhjavaweb.utils.FormUtil;
 
 @WebServlet(urlPatterns = {"/admin-news"})
@@ -26,9 +29,10 @@ public class NewsController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		NewsModel model = FormUtil.toModel(NewsModel.class, req);
+		Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), 
+				new Sorter(model.getSortName(), model.getSortBy()));
 		
-		Integer offset = (model.getPage() - 1)*model.getMaxPageItem();
-		model.setListResult(newsService.findAll(offset, model.getMaxPageItem()));
+		model.setListResult(newsService.findAll(pageble));
 		model.setTotalItem(newsService.getTotalItem());
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
 		

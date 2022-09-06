@@ -60,6 +60,18 @@ pageEncoding="UTF-8"%>
                                         value=""
                                         id="maxPageItem"
                                     />
+                                    <input
+                                        type="hidden"
+                                        name="sortName"
+                                        value=""
+                                        id="sortName"
+                                    />
+                                    <input
+                                        type="hidden"
+                                        name="sortBy"
+                                        value=""
+                                        id="sortBy"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -80,6 +92,8 @@ pageEncoding="UTF-8"%>
                     startPage: currentPage,
                     onPageClick: function (event, page) {
                         if (currentPage != page) {
+                        	$('#sortName').val('title');
+                        	$('#sortBy').val('desc');
                         	$("#maxPageItem").val(limit);
                             $("#page").val(page);
                             $("#formSubmit").submit();

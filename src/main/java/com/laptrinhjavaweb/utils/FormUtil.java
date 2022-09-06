@@ -14,7 +14,7 @@ public class FormUtil {
 		try {
 			object = tClass.newInstance();
 			BeanUtils.populate(object, req.getParameterMap());
-		} catch (InstantiationException |IllegalAccessException | InvocationTargetException e) {
+		} catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
 			System.out.print(e.getMessage());
 		}
 		return object;
