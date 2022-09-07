@@ -24,8 +24,9 @@ pageEncoding="UTF-8"%>
                     </a>
                 </li>
 				<li class="nav-item">
-                    <a class="nav-link" href='<c:url value="/dang-nhap?action=login"/>'>
+                    <a class="nav-link" href="#">
 						Đăng nhập
+						<span class="sr-only">(current)</span>
                     </a>
                 </li>
             </ul>

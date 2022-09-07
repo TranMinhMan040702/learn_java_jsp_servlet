@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.laptrinhjavaweb.service.ICategoryService;
 
-@WebServlet(urlPatterns = {"/trang-chu"})
+@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap"})
 public class HomeController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -25,9 +25,18 @@ public class HomeController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
-		req.setAttribute("categories", categoryService.findAll());
-		RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
-		rd.forward(req, resp);
+		String action = req.getParameter("action");
+		if (action != null && action.equals("login")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/views/login.jsp");
+			rd.forward(req, resp);
+		} else if (action != null && action.equals("logout")) {
+			
+		} else {
+			req.setAttribute("categories", categoryService.findAll());
+			RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
+			rd.forward(req, resp);		
+		}
+
 	}
 	
 	@Override
