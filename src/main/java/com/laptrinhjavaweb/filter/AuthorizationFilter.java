@@ -37,10 +37,10 @@ public class AuthorizationFilter implements Filter{
 				if (model.getRole().getCode().equals(SystemConstant.ADMIN)) {
 					filterChain.doFilter(servletRequest, servletResponse);
 				} else if (model.getRole().getCode().equals(SystemConstant.USER)) {
-					resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login&message=not_permission$altert=danger");
+					resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login&message=not_permission&altert=danger");
 				}
 			} else {
-				resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login&message=not_login$altert=danger");
+				resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login&message=not_login&altert=danger");
 			}
 		} else {
 			filterChain.doFilter(servletRequest, servletResponse);
