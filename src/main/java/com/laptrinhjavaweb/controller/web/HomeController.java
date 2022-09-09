@@ -3,6 +3,7 @@ package com.laptrinhjavaweb.controller.web;
 
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -23,6 +24,8 @@ public class HomeController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
+	ResourceBundle bundle = ResourceBundle.getBundle("message");
+	
 	@Inject
 	private ICategoryService categoryService;
 	
@@ -33,6 +36,12 @@ public class HomeController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		String action = req.getParameter("action");
 		if (action != null && action.equals("login")) {
+			String message = req.getParameter("message");
+			String altert = req.getParameter("altert");
+			if (message != null && altert != null) {
+				req.setAttribute("message", bundle.getString(message));
+				req.setAttribute("altert", altert);
+			}
 			RequestDispatcher rd = req.getRequestDispatcher("/views/login.jsp");
 			rd.forward(req, resp);
 		} else if (action != null && action.equals("logout")) {
@@ -61,6 +70,8 @@ public class HomeController extends HttpServlet{
 				} else {
 					resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login");
 				}
+			} else {
+				resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login&message=username_password_invalid&altert=danger");
 			}
 		}
 	}

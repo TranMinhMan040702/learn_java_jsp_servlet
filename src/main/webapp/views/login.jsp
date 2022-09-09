@@ -17,16 +17,20 @@
 				<img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon"
 					alt="User Icon" />
 			</div> -->
-
+			<c:if test="${not empty message}">
+				<div class="alert alert-${altert}">
+					${message}
+				</div>
+			</c:if>
 			<!-- Login Form -->
 			<form action="<c:url value='/dang-nhap'/>" method="post"
 				id="formLogin">
 				<input type="text" id="userName" class="fadeIn second"
-					name="userName" placeholder="Tên đăng nhập" />
-				<input type="password" id="password" class="fadeIn third"
-					name="password" placeholder="Mật khẩu" /> <input
-					type="hidden" value="login" name="action" /> <input type="submit"
-					class="fadeIn fourth" value="Log in" />
+					name="userName" placeholder="Tên đăng nhập" /> <input
+					type="password" id="password" class="fadeIn third" name="password"
+					placeholder="Mật khẩu" /> <input type="hidden" value="login"
+					name="action" /> <input type="submit" class="fadeIn fourth"
+					value="Log in" />
 			</form>
 
 			<!-- Remind Passowrd -->
