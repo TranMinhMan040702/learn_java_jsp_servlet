@@ -6,6 +6,7 @@ pageEncoding="UTF-8"%>
     <head>
         <meta charset="UTF-8" />
         <title>Insert title here</title>
+    </head>
     <body>
         <div class="main-content">
             <form action="<c:url value='/admin-news'/>"  method="get" id="formSubmit">
@@ -64,11 +65,13 @@ pageEncoding="UTF-8"%>
                                                     </td>
                                                     <td>
                                                         <c:url var="editURL" value="/admin-news">
-                                                            <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                                               title="Cập nhật bài viết" href='${editURL}'>
-                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                            </a>
+                                                            <c:param name="type" value="edit"/>
+                                                            <c:param name="id" value="${item.id}"/>
                                                         </c:url>
+                                                        <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
+                                                           title="Cập nhật bài viết" href='${editURL}'>
+                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
