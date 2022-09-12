@@ -14,6 +14,7 @@ import com.laptrinhjavaweb.constant.SystemConstant;
 import com.laptrinhjavaweb.model.NewsModel;
 import com.laptrinhjavaweb.paging.PageRequest;
 import com.laptrinhjavaweb.paging.Pageble;
+import com.laptrinhjavaweb.service.ICategoryService;
 import com.laptrinhjavaweb.service.INewsService;
 import com.laptrinhjavaweb.sort.Sorter;
 import com.laptrinhjavaweb.utils.FormUtil;
@@ -21,23 +22,38 @@ import com.laptrinhjavaweb.utils.FormUtil;
 @WebServlet(urlPatterns = {"/admin-news"})
 public class NewsController extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-	
-	@Inject
-	private INewsService newsService;
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		NewsModel model = FormUtil.toModel(NewsModel.class, req);
-		Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), 
-				new Sorter(model.getSortName(), model.getSortBy()));
-		
-		model.setListResult(newsService.findAll(pageble));
-		model.setTotalItem(newsService.getTotalItem());
-		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
-		
-		req.setAttribute(SystemConstant.MODEL, model);
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/news/list.jsp");
-		rd.forward(req, resp);
-	}
+    private static final long serialVersionUID = 1L;
+
+    @Inject
+    private INewsService newsService;
+    @Inject
+    private ICategoryService categoryService;
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        NewsModel model = FormUtil.toModel(NewsModel.class, req);
+        String view = "";
+        if (model.getType().equals(SystemConstant.LIST)) {
+            Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(),
+                    new Sorter(model.getSortName(), model.getSortBy()));
+
+            model.setListResult(newsService.findAll(pageble));
+            model.setTotalItem(newsService.getTotalItem());
+            model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
+
+            view = "/views/admin/news/list.jsp";
+        } else if (model.getType().equals(SystemConstant.EDIT)) {
+            if (model.getId() != null) {
+                model = newsService.findOne(model.getId());
+            } else {
+
+            }
+            req.setAttribute("categories", categoryService.findAll());
+            view = "/views/admin/news/edit.jsp";
+        }
+        req.setAttribute(SystemConstant.MODEL, model);
+        RequestDispatcher rd = req.getRequestDispatcher(view);
+        rd.forward(req, resp);
+    }
+
+
 }

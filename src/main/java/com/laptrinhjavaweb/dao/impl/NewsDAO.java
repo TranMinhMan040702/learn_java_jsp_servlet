@@ -20,7 +20,7 @@ public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 		StringBuilder sql = new StringBuilder("insert into news (title, thumbnail, shortdescrition,  ");
 		sql.append(" content, categoryid, createddate, createdby) ");
 		sql.append("values(?, ?, ?, ?, ?, ?, ?)");
-		return insert (sql.toString(), newsModel.getTitle(), newsModel.getThumbnail(), newsModel.getShortDescrition(), 
+		return insert (sql.toString(), newsModel.getTitle(), newsModel.getThumbnail(), newsModel.getShortDescription(),
 				newsModel.getContent(), newsModel.getCategoryId(), newsModel.getCreatedDate(), newsModel.getCreatedBy());
 		
 	}
@@ -43,7 +43,7 @@ public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 		StringBuilder sql = new StringBuilder("update news set title = ?, thumbnail = ?, ");
 		sql.append("shortdescrition = ?, content = ?, categoryid = ?, ");
 		sql.append("createddate = ?, createdby = ?, modifieddate = ?, modifiedby = ? where id = ?");
-		update(sql.toString(), updateNews.getTitle(), updateNews.getThumbnail(), updateNews.getShortDescrition(),
+		update(sql.toString(), updateNews.getTitle(), updateNews.getThumbnail(), updateNews.getShortDescription(),
 				updateNews.getContent(), updateNews.getCategoryId(), 
 				updateNews.getCreatedDate(), updateNews.getCreatedBy(), 
 				updateNews.getModifiedDate(), updateNews.getModifiedBy(), updateNews.getId());	

@@ -47,6 +47,12 @@ public class NewsService implements INewsService{
 	public List<NewsModel> findAll(Pageble pageble) {
 		return newsDao.findAll(pageble);
 	}
+
+	@Override
+	public NewsModel findOne(Long id) {
+		return newsDao.findOne(id);
+	}
+
 	@Override
 	public int getTotalItem() {
 		return newsDao.getTotalItem();

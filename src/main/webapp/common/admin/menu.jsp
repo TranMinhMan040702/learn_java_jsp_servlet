@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%>
+         pageEncoding="UTF-8" %>
+<%@include file="/common/taglib.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div id="sidebar" class="sidebar responsive ace-save-state">
     <script type="text/javascript">
         try {
             ace.settings.loadState("sidebar");
-        } catch (e) {}
+        } catch (e) {
+        }
     </script>
     <div class="sidebar-shortcuts">
         <div class="sidebar-shortcuts-large">
@@ -44,7 +45,7 @@ pageEncoding="UTF-8"%>
             <b class="arrow"></b>
             <ul class="submenu">
                 <li>
-                    <a href='<c:url value="/admin-news?page=1&maxPageItem=2&sortName=title&sortBy=desc"/>'>
+                    <a href='<c:url value="/admin-news?page=1&maxPageItem=2&sortName=title&sortBy=desc&type=list"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
                         DS bài viết
                     </a>
@@ -55,9 +56,9 @@ pageEncoding="UTF-8"%>
     </ul>
     <div class="sidebar-toggle sidebar-collapse">
         <i
-            class="ace-icon fa fa-angle-double-left ace-save-state"
-            data-icon1="ace-icon fa fa-angle-double-left"
-            data-icon2="ace-icon fa fa-angle-double-right"
+                class="ace-icon fa fa-angle-double-left ace-save-state"
+                data-icon1="ace-icon fa fa-angle-double-left"
+                data-icon2="ace-icon fa fa-angle-double-right"
         ></i>
     </div>
 </div>
