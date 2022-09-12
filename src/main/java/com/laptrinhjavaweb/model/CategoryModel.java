@@ -4,7 +4,6 @@ public class CategoryModel extends AbstractModel<CategoryModel>{
 	
 	private String name;
 	private String code;
-
     public String getName() {
 		return name;
 	}
