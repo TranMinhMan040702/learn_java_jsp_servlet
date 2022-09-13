@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
+<c:url var="APIurl" value="/api-admin-news"/>
+<c:url var="NewURL" value="/admin-news"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,6 +50,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
+                                    <th><input type="checkbox" id="checkAll"></th>
                                     <th>Tên bài viết</th>
                                     <th>Mô tả ngắn</th>
                                     <th>Thao tác</th>
@@ -59,10 +62,9 @@
                                         items="${model.listResult}"
                                 >
                                     <tr>
+                                        <td><input type="checkbox" id="check_${item.id}" value="${item.id}"></td>
                                         <td>${item.title}</td>
-                                        <td>
-                                                ${item.shortDescription}
-                                        </td>
+                                        <td>${item.shortDescription}</td>
                                         <td>
 <%--                                            <c:url var="editURL" value="/admin-news">--%>
 <%--                                                <c:param name="type" value="edit"/>--%>
@@ -140,6 +142,29 @@
             },
         });
     });
+    $('#btnDelete').click(function(e) {
+        var data = {};
+        var ids = $('tbody input[type=checkbox]:checked').map(function (){
+            return $(this).val()
+        }).get();
+        data["ids"] = ids;
+        deleteNews(data);
+    });
+    function deleteNews(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'delete',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataTypes: 'json',
+            success: function (result) {
+                window.location.assign('${NewURL}?page=1&maxPageItem=2&sortName=title&sortBy=desc&type=list');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+    }
 </script>
 </body>
 </html>

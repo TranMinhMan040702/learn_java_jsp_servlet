@@ -110,57 +110,49 @@
     </div>
 </div>
 <script>
-    var editor = '';
-    $(document).ready(function () {
-        editor = CKEDITOR.replace('content');
-    });
-
     $('#btnAddOrUpdateNew').click(function (e) {
         e.preventDefault();
         var data = {};
         var formData = $('#formSubmit').serializeArray();
         $.each(formData, function (i, v) {
-            data["" + v.name + ""] = v.value;
+            data[""+v.name+""] = v.value;
         });
-        data["content"] = editor.getData();
         var id = $('#id').val();
         if (id == "") {
-            addNew(data);
+            addNews(data);
         } else {
-            updateNew(data);
+            updateNews(data);
         }
     });
-
-    function addNew(data) {
+    function addNews(data) {
         $.ajax({
             url: '${APIurl}',
-            type: 'POST',
+            type: 'post',
             contentType: 'application/json',
             data: JSON.stringify(data),
-            dataType: 'json',
+            dataTypes: 'json',
             success: function (result) {
-                window.location.href = "${NewURL}?type=edit&id=" + result.id + "&message=insert_success";
+                window.location.assign('${NewURL}?page=1&maxPageItem=2&sortName=title&sortBy=desc&type=list');
             },
             error: function (error) {
-                window.location.href = "${NewURL}?type=list&maxPageItem=2&page=1&message=error_system";
+                console.log(error);
             }
-        });
+        })
     }
-
-    function updateNew(data) {
+    function updateNews(data) {
         $.ajax({
             url: '${APIurl}',
-            type: 'PUT',
+            type: 'put',
             contentType: 'application/json',
             data: JSON.stringify(data),
-            dataType: 'json',
+            dataTypes: 'json',
             success: function (result) {
-                window.location.href = "${NewURL}?type=edit&id=" + result.id + "&message=update_success";
+                console.log(result);
             },
             error: function (error) {
-                window.location.href = "${NewURL}?type=list&maxPageItem=2&page=1&message=error_system";
+                console.log(error);
             }
-        });
+        })
     }
 </script>
 </body>

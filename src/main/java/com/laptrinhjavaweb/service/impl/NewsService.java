@@ -25,6 +25,8 @@ public class NewsService implements INewsService{
 	@Override
 	public NewsModel save(NewsModel newsModel) {
 		newsModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+		CategoryModel category = categoryDao.findOneByCode(newsModel.getCategoryCode());
+		newsModel.setCategoryId(category.getId());
 		Long newsId = newsDao.save(newsModel);
 		return newsDao.findOne(newsId);
 	}
@@ -35,6 +37,8 @@ public class NewsService implements INewsService{
 		updateNews.setCreatedDate(oldNews.getCreatedDate());
 		updateNews.setCreatedBy(oldNews.getCreatedBy());
 		updateNews.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+		CategoryModel category = categoryDao.findOneByCode(updateNews.getCategoryCode());
+		updateNews.setCategoryId(category.getId());
 		newsDao.update(updateNews);
 		return newsDao.findOne(updateNews.getId());
 	}
