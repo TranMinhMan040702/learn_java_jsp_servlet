@@ -110,6 +110,11 @@
     </div>
 </div>
 <script>
+    var editor = "";
+    $(document).ready(function(){
+        editor = CKEDITOR.replace('content');
+    });
+
     $('#btnAddOrUpdateNew').click(function (e) {
         e.preventDefault();
         var data = {};
@@ -117,6 +122,7 @@
         $.each(formData, function (i, v) {
             data[""+v.name+""] = v.value;
         });
+        data["content"] = editor.getData();
         var id = $('#id').val();
         if (id == "") {
             addNews(data);

@@ -7,6 +7,7 @@
 	<%@ include file="/common/admin/link-css.jsp" %>
 	<%@ include file="/common/admin/import-js.jsp" %>
 	<%@ include file="/common/paging/paging.jsp" %>
+	<script src="<<c:url value="/ckeditor/ckeditor.js"/>>"></script>
 </head>
 <body class="no-skin">
 	<!-- header -->
